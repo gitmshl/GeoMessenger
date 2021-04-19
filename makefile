@@ -19,10 +19,10 @@ install_packages:
 
 
 refresh_db:
-	./drop_tables.sh
-	./create_tables.bash
+	./config/drop_tables.sh
+	./config/create_tables.bash
 
 
 fill_db:
-	./fill_tables.bash
+	./config/fill_tables.bash
 
