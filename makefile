@@ -13,3 +13,16 @@ start:
 
 db:
 	psql -U musa -d gmessengerdb
+
+install_packages:
+	pip install -r requirements.txt
+
+
+refresh_db:
+	./drop_tables.sh
+	./create_tables.bash
+
+
+fill_db:
+	./fill_tables.bash
+
