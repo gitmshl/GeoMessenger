@@ -17,7 +17,7 @@ class PH:
         }
 
 
-    def handle(self, mproto_query):
+    def handle(self, mproto_query, user_id):
         if 'code' not in mproto_query:
             return self.__sender.send_150('Отстуствует поле "code"')
 
@@ -26,18 +26,18 @@ class PH:
             return self.__sender.send_150(f'Не существует кода {code} в протоколе MProto')
     
         try:
-            return self.__codes[f'{code}'](mproto_query)
+            return self.__codes[f'{code}'](mproto_query, user_id)
         except DBConnectionException:
             return self.__sender.send_151()
 
 
-    def handle20(self, mproto_query):
-        user_id = mproto_query["from"]
+    def handle20(self, mproto_query, user_id_):
+        user_id = user_id_
         return self.__sender.send_120(self.__dbhandler.getDialogsByUserId(user_id))
 
 
-    def handle21(self, mproto_query):
-        dialog_id = mproto_query["dialog_id"]
+    def handle21(self, mproto_query, user_id_):
+        dialog_id = user_id_
         return self.__sender.send_121(self.__dbhandler.getMessagesByDialogId(dialog_id))
 
     
