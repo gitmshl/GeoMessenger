@@ -23,7 +23,7 @@ class DBHandler:
                 'user_id': msg[1],
                 'msg': msg[2],
                 'picture': msg[3],
-                'time': msg[4],
+                'time': msg[4].isoformat(),
                 'status': msg[5]
             }
             messages.append(message)
@@ -89,7 +89,7 @@ class DBHandler:
                 'id': lstmsg[0],
                 'from': lstmsg[1],
                 'msg': lstmsg[2],
-                'time': lstmsg[3],
+                'time': lstmsg[3].isoformat(),
                 'status':lstmsg[4] 
             }
 

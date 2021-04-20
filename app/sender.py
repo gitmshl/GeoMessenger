@@ -3,17 +3,29 @@ class Sender:
     
     def send_150(self, text):
         msg = f"Ошибка в протоколе: {text}"
-        print('send150', msg)
+        return {
+            'code': 150,
+            'msg': msg
+        }
 
 
     def send_151(self, text=''):
         msg = f"Соединение с базой данных потеряно... {text}"
-        print('send 151', msg)
+        return {
+            'code': 151,
+            'msg': msg
+        }
 
 
     def send_120(self, dialogs):
-        print(f'send 120: {dialogs}')
+        return {
+            'code': 120,
+            'dialogs': dialogs["dialogs"]
+        }
 
 
     def send_121(self, messages):
-        print(f'send 121: {messages}')
+        return {
+            'code': 121,
+            'messages': messages["messages"]
+        }

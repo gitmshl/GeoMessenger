@@ -1,15 +1,15 @@
 #! /usr/bin/bash
 
-psql -d gmessengerdb -c "insert into users (login, name, avatar, online) values 
-('logmusa', 'musa', '', TRUE),
-('log1', 'name1', '', FALSE),
-('log2', 'name2', '', TRUE),
-('log3', 'name3', '', TRUE),
-('log4', 'name4', '', FALSE),
-('log5', 'name5', '', TRUE),
-('log6', 'name6', '', FALSE),
-('log7', 'name7', '', TRUE),
-('log8', 'name8', '', FALSE)
+psql -d gmessengerdb -c "insert into users (login, password, name, avatar, online) values 
+('logmusa', '345ferma', 'musa', '', TRUE),
+('log1', '345ferma', 'name1', '', FALSE),
+('log2', '345ferma', 'name2', '', TRUE),
+('log3', '345ferma', 'name3', '', TRUE),
+('log4', '345ferma', 'name4', '', FALSE),
+('log5', '345ferma', 'name5', '', TRUE),
+('log6', '345ferma', 'name6', '', FALSE),
+('log7', '345ferma', 'name7', '', TRUE),
+('log8', '345ferma', 'name8', '', FALSE)
 "
 
 

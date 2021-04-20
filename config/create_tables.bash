@@ -9,6 +9,7 @@ psql -d gmessengerdb -c "create sequence messages_id_seq start 1"
 psql -d gmessengerdb -c "create table users (
         user_id integer not null default nextval('users_id_seq'),
         login varchar(60) not null,
+        password varchar(100) not null,
         name varchar(60) not null,
         avatar varchar(60),
         last_visit_time timestamp default CURRENT_TIMESTAMP,
