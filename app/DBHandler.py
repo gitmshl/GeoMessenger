@@ -8,6 +8,17 @@ class DBHandler:
     def __init__(self):
         self.__connector = Connector()
 
+
+    def getIdAndPasswordByLogin(self, user_login):
+        try:
+            cursor = self.__connector.getCursor()
+            cursor.execute(f'select user_id, password from users where login = \'{user_login}\'')
+        except Exception:
+            raise DBConnectionException
+        res = cursor.fetchone()
+        return res
+
+
     # Возвращает список сообщений в диалоге
     def getMessagesByDialogId(self, dialog_id):
         try:

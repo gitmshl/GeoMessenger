@@ -39,3 +39,7 @@ class PH:
     def handle21(self, mproto_query):
         dialog_id = mproto_query["dialog_id"]
         return self.__sender.send_121(self.__dbhandler.getMessagesByDialogId(dialog_id))
+
+    
+    def _getIdAndPasswordByLogin(self, user_login):
+        return self.__dbhandler.getIdAndPasswordByLogin(user_login)
