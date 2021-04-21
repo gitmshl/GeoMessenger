@@ -13,13 +13,13 @@ psql -d gmessengerdb -c "insert into users (login, password, name, avatar, onlin
 "
 
 
-psql -d gmessengerdb -c "insert into dialogs (dialog_id, type, avatar) values 
-(1, 'p2p', ''),
-(2, 'dialog', ''),
-(3, 'dialog', ''),
-(4, 'p2p', ''),
-(5, 'dialog', ''),
-(6, 'p2p', '')
+psql -d gmessengerdb -c "insert into dialogs (dialog_id, dialog_name, type, avatar) values 
+(1, '', 'p2p', ''),
+(2, 'our_dialog_2', 'dialog', ''),
+(3, 'super_dialog_3' ,'dialog', ''),
+(4, '', 'p2p', ''),
+(5, 'beseda_5' ,'dialog', ''),
+(6, '', 'p2p', '')
 "
 
 

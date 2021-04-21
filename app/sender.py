@@ -27,5 +27,6 @@ class Sender:
     def send_121(self, messages):
         return {
             'code': 121,
+            'lastMsgInf': messages["lastMsgInf"],
             'messages': messages["messages"]
         }

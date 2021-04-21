@@ -4,7 +4,12 @@ $(document).ready( () => {
     let current_room = -1;
     var sio = io.connect(location.protocol + '//' + document.domain + ':' + location.port);
     
-    sio.emit('proto20', {'code': 20});
+    
+    SST.init();
+    Painter.init();
+    Timer.init();
+    Sender.setSio(sio);
+    UC.req_20();
 
 
     sio.on('getMessages', data => {
@@ -18,12 +23,12 @@ $(document).ready( () => {
 
     sio.on('proto20', data => {
         console.log('proto20');
-        console.log(data);
+        PH.handle(data);
     });
 
     sio.on('proto21', data => {
         console.log('proto21');
-        console.log(data);
+        PH.handle(data);
     });
 
 

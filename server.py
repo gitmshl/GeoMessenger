@@ -3,6 +3,7 @@ from flask_socketio import SocketIO, send, emit, join_room, leave_room
 
 from app import ph, conn, app, socketio
 from custom_exceptions import DBConnectionException
+from DBHandler import DBHandler
 
 
 @app.route('/login')

@@ -48,6 +48,7 @@ $(document).ready(function(){
                 if (status == 'success'){
                     user_id = response['id'];
                     Consts.setCookie('user_id', user_id, 7);
+                    SST.setUserId(user_id);
                     location.href = "/messenger";
                     return;
                 }

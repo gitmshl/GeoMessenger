@@ -19,6 +19,7 @@ psql -d gmessengerdb -c "create table users (
 
 psql -d gmessengerdb -c "create table dialogs (
         dialog_id integer not null default nextval('dialogs_id_seq'),
+        dialog_name varchar(60),
         type varchar(20),
         avatar varchar(60),
         constraint dialogs_pk_pk primary key (dialog_id)
