@@ -113,7 +113,7 @@ class Painter{
         let div = document.createElement("div");
         div.className = "dialog_block";
         div.id = dialog_id;
-        let avatar_block = "<div class=\"avatar_block\"><img src=\"img/user_"+ SST.getId() +"/"+ dialog_img +"\"></div>"; /// описание блока avatar_block
+        let avatar_block = "<div class=\"avatar_block\"><img src=\"" + Consts.IMAGE_LOADER_URL + dialog_img +"\" width=40%></div>"; /// описание блока avatar_block
         let sub1 = "<div class=\"sub1\">" + dialog_name + "</div>"; /// Имя
         let sub2 = "<div class=\"sub2\" style=\"display: block;\">"+last_msg+"</div>"; /// последнее сообщение
         let date = "<div class=\"date\">"+Painter.getRightDateTime(last_msg_time)+"</div>"; /// дата (время) последнего сообщения
@@ -187,7 +187,7 @@ class Painter{
         let from_user_id = message.user_id;
         console.log('from ' + from_user_id);
         let from_user_name = message.from_user_name;
-        let from_user_avatar = "user_" + from_user_id + "/" + message.picture;
+        let from_user_avatar = message.from_user_avatar;
         let msg = message.msg;
         let msg_time = new Date(message.time);
         let msg_hours = msg_time.getHours() < 10 ? "0" + msg_time.getHours() : msg_time.getHours();
@@ -197,10 +197,10 @@ class Painter{
         div.className = "dialog_history_current_dialog";
         div.id = "message_id_" + message_id;
         div.innerHTML = "<div class=\""+classdop+" message_current_dialog\"><div id=\"photo_space\">" +
-            "<img src=\"img/" + from_user_avatar +"\" alt=\"\" id=\"avat\">" +
-            "<div class=\"hiddenUserName_current_dialog\">" + from_user_name + "</div>" +
+            "<img src=\"" + Consts.IMAGE_LOADER_URL + from_user_avatar +"\" alt=\"\" id=\"avat\" height=100%>" +
             "<div class=\"hiddenUserId_current_dialog\" style=\"display: none;\">"+from_user_id+"</div>" +
-            "</div><p class=\"date_current_dialog\">"+msg_hours+":"+msg_minutes+"</p>" +
+            "</div>" + "<div class=\"hiddenUserName_current_dialog\" style='margin-left:14%;font-weight:600;'> " + from_user_name + "</div>"
+            + "<p class=\"date_current_dialog\">"+msg_hours+":"+msg_minutes+"</p>" +
             "<p class=\"message_text_current_dialog\">"+msg+"</p></div>";
 
         Painter.Block.Dialog.maindiv.appendChild(div);

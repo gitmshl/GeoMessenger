@@ -1,4 +1,7 @@
 class Consts{
+
+    static IMAGE_LOADER_URL = 'http://localhost:5000/image/';
+
     static MIN_LOGIN_LENGTH = 1;
     static MIN_PASSWORD_LENGTH = 1;
 

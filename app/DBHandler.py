@@ -120,12 +120,15 @@ class DBHandler:
             cursor.execute(f'SELECT type, avatar from dialogs where dialog_id={dialog_id}')
             dialog = cursor.fetchone()           
             if dialog is None: return None
+            dialog_res = self.getDialogNameAndAvatar(dialog_id, user_id)
 
-            dialog_name = self.getDialogName(dialog_id, user_id)
-            if dialog_name is None:
+            if dialog_res is None:
                 print('ИМЯ ДИАЛОГА NONE. ЭТО ОЧЕНЬ СТРАННО!!!!')
                 dialog_name = 'undefined'
-
+                dialog_avatar = ''
+            else:
+                dialog_name, dialog_avatar = dialog_res
+            
             cursor.execute(f'select id, user_id, msg, time, status from messages where dialog_id = {dialog_id} order by time desc limit 1;')
             lstmsg = cursor.fetchone()
         except Exception:
@@ -147,29 +150,40 @@ class DBHandler:
             'dialog_id': dialog_id,
             'dialog_name': dialog_name,
             'type': dialog[0],
-            'avatar': dialog[1],
+            'avatar': dialog_avatar,
             'lastMsg': lastMsg
             }
 
         return result
 
 
-    def getDialogName(self, dialog_id, user_id):
+    def getDialogNameAndAvatar(self, dialog_id, user_id):
         try:
             cursor = self.__connector.getCursor()
-            cursor.execute(f'SELECT type, dialog_name from dialogs where dialog_id={dialog_id}')
+            cursor.execute(f'SELECT type, dialog_name, avatar from dialogs where dialog_id={dialog_id}')
 
             res = cursor.fetchone()
             if res is None: return None
-            dialog_type, dialog_name = res[0], res[1]
-            if dialog_type == 'dialog': return dialog_name
+            dialog_type, dialog_name, dialog_avatar = res[0], res[1], res[2]
+            if dialog_type == 'dialog': return (dialog_name, dialog_avatar)
 
             cursor.execute(f'select user_id from dialogs_info where dialog_id = {dialog_id} and user_id != {user_id}')         
             another_user = cursor.fetchone()
             if another_user is None: return None
             another_user_id = another_user[0]
-            return self.getUserNameById(another_user_id)
+            return (self.getUserNameById(another_user_id), self.getUserAvatarById(another_user_id))
 
+        except Exception:
+            raise DBConnectionException
+
+
+    def getUserAvatarById(self, user_id):
+        try:
+            cursor = self.__connector.getCursor()
+            cursor.execute(f'SELECT avatar from users where user_id={user_id}')
+            res = cursor.fetchone()
+            if res is None: return ''
+            return res[0]
         except Exception:
             raise DBConnectionException
 

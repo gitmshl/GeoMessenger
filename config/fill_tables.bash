@@ -1,24 +1,24 @@
 #! /usr/bin/bash
 
 psql -d gmessengerdb -c "insert into users (login, password, name, avatar, online) values 
-('logmusa', '345ferma', 'musa', '', TRUE),
-('log1', '345ferma', 'name1', '', FALSE),
-('log2', '345ferma', 'name2', '', TRUE),
-('log3', '345ferma', 'name3', '', TRUE),
-('log4', '345ferma', 'name4', '', FALSE),
-('log5', '345ferma', 'name5', '', TRUE),
-('log6', '345ferma', 'name6', '', FALSE),
-('log7', '345ferma', 'name7', '', TRUE),
-('log8', '345ferma', 'name8', '', FALSE)
+('logmusa', '345ferma', 'musa', 'rain.jpeg', TRUE),
+('log1', '345ferma', 'name1', 'ironman.jpeg', FALSE),
+('log2', '345ferma', 'name2', 'rain.jpeg', TRUE),
+('log3', '345ferma', 'name3', 'ironman.jpeg', TRUE),
+('log4', '345ferma', 'name4', 'rain.jpeg', FALSE),
+('log5', '345ferma', 'name5', 'ironman.jpeg', TRUE),
+('log6', '345ferma', 'name6', 'rain.jpeg', FALSE),
+('log7', '345ferma', 'name7', 'ironman.jpeg', TRUE),
+('log8', '345ferma', 'name8', 'rain.jpeg', FALSE)
 "
 
 
 psql -d gmessengerdb -c "insert into dialogs (dialog_id, dialog_name, type, avatar) values 
 (1, '', 'p2p', ''),
-(2, 'our_dialog_2', 'dialog', ''),
-(3, 'super_dialog_3' ,'dialog', ''),
+(2, 'our_dialog_2', 'dialog', 'spider.jpeg'),
+(3, 'super_dialog_3' ,'dialog', 'spider.jpeg'),
 (4, '', 'p2p', ''),
-(5, 'beseda_5' ,'dialog', ''),
+(5, 'beseda_5' ,'dialog', 'spider.jpeg'),
 (6, '', 'p2p', '')
 "
 

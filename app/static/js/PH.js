@@ -6,6 +6,7 @@ class PH{
             case 120: this.handle_120(obj.dialogs); break;
             case 121: this.handle_121(obj); break;
             default:
+                console.log(obj)
                 alert('Пришел запрос с неизвестным кодом!!!');
         }
     }

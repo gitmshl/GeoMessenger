@@ -1,4 +1,5 @@
 from flask import Flask, request, render_template, session, url_for, redirect
+from flask import send_from_directory
 from flask_socketio import SocketIO, send, emit, join_room, leave_room
 
 from app import ph, conn, app, socketio
@@ -35,6 +36,12 @@ def aut():
         return {'status': 'success', 'id': id}
     else:
         return {'status': 'incorrect'}
+
+
+@app.route('/image/<string:avatar>')
+def image(avatar):
+    print('another one')
+    return send_from_directory('/home/musa/GeoMessenger/app/static/img/', filename=avatar, as_attachment=True)
 
 
 @app.route('/messenger')
